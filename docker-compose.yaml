@@ -1,0 +1,45 @@
+version: "3.7"
+services:
+  crud-server:
+    image: nginx:stable-alpine
+    container_name: crud-server
+    ports:
+      - 80:80
+    volumes:
+      - ./BladeCrud:/var/www/html/BladeCrud
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - crud-php
+      - crud-db
+    networks:
+      - crud
+
+  crud-db:
+    image: mysql:5.7
+    container_name: crud-db
+    environment:
+      MYSQL_DATABASE: crud
+      MYSQL_USER: crud
+      MYSQL_PASSWORD: crud
+      MYSQL_ROOT_PASSWORD: crud.admin
+    ports:
+      - 3406:3306
+    volumes:
+      - ./mysql/crud:/var/lib/mysql
+    networks:
+      - crud
+
+  crud-php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: crud-php
+    volumes:
+      - ./BladeCrud:/var/www/html/BladeCrud
+    ports:
+      - 9000:80
+    networks:
+      - crud
+
+networks:
+  crud:
