@@ -1,26 +1,16 @@
 # Ejemplo de Desarrollo de laravel
 
-- git clone ""
+Proyecto de ejemplo. Asesoria de desarrollo Laravel.
 
-- git fetch origin
-
-- git branch -a
-
-- git checkout master
-
-- git pull origin master
-
-- composer create-project laravel/laravel BladeCrud
-
-- composer create-project --prefer-dist laravel/laravel:^7.0 blog
+- git clone https://github.com/JassoEC/BladeCrud.git
 
 ### Ejecutar
 
 - mkdir mysql
 
-- cd BladeCrud/BladeCrud
-
 ### instalacion de dependencias
+
+- cd BladeCrud
 
 - composer install
 
@@ -32,6 +22,8 @@
 
 ## Ejecución sin Docker
 
+- cd BladeCrud
+
 - composer install
 
 ## configuración de variables de entorno
@@ -42,7 +34,7 @@
 
 - php artisan serve
 
-## Migracions
+## Migraciones
 
 - php artisan migrate
 
